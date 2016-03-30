@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title> Project </title>
+ </head>
+
+ <body>
+  <?php
+
+	$textFile = file_get_contents('fortune500.json'); // upload file
+	$obj = json_decode($textFile);      //use it later for looping the data.
+
+	$dom = new DOMDocument('1.0','utf-8'); // create document
+	$element = $dom->createElement('table',$textFile);
+	$dom->appendChild($element);
+
+
+	echo $dom->saveXML();
+
+
+ ?>
+ </body>
+
+
+
+</html>
