@@ -1,0 +1,7 @@
+database info:
+run these commands to see what we have currently
+>mysql -u sinclair -psinclair5543 -h cis.gvsu.edu
+>use sinclair;
+>desc users;
+
+This will show the users table that we are going to use to store users.
