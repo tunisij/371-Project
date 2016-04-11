@@ -1,7 +1,18 @@
+/* Header Styles */
+
 #heading-container{
     width: 100%;
     background-color: #00ACe9;
+    height: 100px;
 }
+
+#heading-container .col-md-3{
+    height: 100%;
+    align-content: center;
+}
+
+
+/* Main Page Movie Search Bar */
 
 .featurette{
     display: table;
@@ -40,6 +51,22 @@ featurette .search.has-button .form-group{
     margin-top: 5px;
     width: 100%;
 }
+
+/* Modal Forms */
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
+
 
 /* Media Queries */
 

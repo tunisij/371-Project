@@ -1,24 +1,71 @@
 <html>
   <head>
-    <title> movieList </title>
+    <title> Movie List </title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="assets/styles/landing.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
+    <script src="bower_components/bootstrap/js/modal.js"></script>
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
  </head>
        
  <body>
+     
+     <!-- TODO: make this heading container a boostrap nav bar 
+     http://www.bootply.com/98624 -->
     <section id="heading-container">
-            <div class="container">
+            <div class="container text-center">
                 <div class="row">
                     <div class="col-md-3"><img src="assets/images/movielist-logo-name.png"
                         alt="Movie List" style="width: 100px; height:100px;">
                     </div>
                     
-                    <div class="col-md-3">
-                       
+                    <div class="col-md-3 pull-right">
+                        <!-- Model Inputs for Creating New List and search existing lists  
+                         https://jsfiddle.net/KyleMit/0fscmf3L 
+                         -->
+                        <button class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#createListModel">Create List</button>
+                        <div class="modal fade" id="createListModel" tabindex-"-1" role="dialog"
+                            aria-labelledby="modelLabel1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Model Header -->
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span>
+                                            <span class="sr-only">Close</span>
+                                        </button>
+                                        <h4 class="modal-title" id="modelLabel1">
+                                            Create a List
+                                        </h4>
+                                    </div>
+                                    <! -- Model Body --> 
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"
+                                                    for="inputNewListName">List Name</label>
+                                                <div class="col-sm-10">
+                                                    <input type="name" class="form-control" id="inputName" placeholder="List Name"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="submit" class="btn btn-default">Create</button>
+                                                </div>
+                                            </div>
+                                         </form>
+                                    </div>
+                                    <!-- Model Footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
                     </div>
                     
-                    <div class="col-md-4"></div>
+                    <div class="col-md-4 pull-right"></div>
             </div>
         </section>
         
@@ -26,10 +73,11 @@
             <div class="featurette">
                 <div class="featurette-inner text-center">
                     <form role="form" class="search has-button">
-			<h3 class="no-margin-top h3">Search our lists</h3>
+			<h3 class="no-margin-top h3">Search movies</h3>
                         <div class="form-group">
-                            <input type="search" placeholder="Search existing lists" class="form-control form-control-lg">
-                            <button class="btn btn-lg btn-warning" id="list-search-button" type="button">Search</button>   
+                            <input type="search" placeholder="Search movie database" class="form-control form-control-lg">
+                            <button class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
+                               
                         </div>
                     </form>
             </div>
