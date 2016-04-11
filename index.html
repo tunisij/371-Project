@@ -16,11 +16,18 @@
             url: "http://www.omdbapi.com/?t=" + searchText + "&y=&plot=short&r=json",
             dataType: "json",
             success: successFunction
-        });
+            });
         };
 
         function successFunction(data) {
+            if (data.Response === "False") {
+                document.getElementById("paragraphSection").innerHTML="";
+                alert("Movie not found");
+            } else {
+                var movie = "<p>" + data.Title + "</p><p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p>" + data.Director + "</p><p>" + data.Writer + "</p><p>" + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="' + data.Poster + '"></p>';
 
+                document.getElementById("paragraphSection").innerHTML=movie;
+            }
         };
     </script>
  </head>
@@ -102,7 +109,7 @@
 
     <section id="content-section">
         <div class="col-md-6"></div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6"><p id="paragraphSection"></p></div>
     </section>
  </body>
 
