@@ -6,7 +6,23 @@
     <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
     <script src="bower_components/bootstrap/js/modal.js"></script>
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+        function ajaxCall() {
+            var searchText = document.getElementById("searchInput").value.split(" ");
+            searchText = searchText.join("+");
+
+            $.ajax({
+            url: "http://www.omdbapi.com/?t=" + searchText + "&y=&plot=short&r=json",
+            dataType: "json",
+            success: successFunction
+        });
+        };
+
+        function successFunction(data) {
+
+        };
+    </script>
  </head>
        
  <body>
@@ -75,13 +91,16 @@
                     <form role="form" class="search has-button">
 			<h3 class="no-margin-top h3">Search movies</h3>
                         <div class="form-group">
-                            <input type="search" placeholder="Search movie database" class="form-control form-control-lg">
-                            <button class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
+                            <input id="searchInput" type="search" placeholder="Search movie database" class="form-control form-control-lg">
+                            <button onclick="ajaxCall()" class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
                                
                         </div>
                     </form>
             </div>
         </div>
+        <div class="col-md-8" style="height=40">
+        </div>
+        <div class="col-md-4" style="height=40"></div>
  </body>
 
 </html>
