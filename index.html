@@ -8,6 +8,32 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+        function ajaxCall() {
+            var searchText = document.getElementById("searchInput").value.split(" ");
+            searchText = searchText.join("+");
+
+            $.ajax({
+            url: "http://www.omdbapi.com/?t=" + searchText + "&y=&plot=short&r=json",
+            dataType: "json",
+            success: successFunction
+            });
+        };
+
+        function successFunction(data) {
+            if (data.Response === "False") {
+                document.getElementById("paragraphSection").innerHTML="";
+                alert("Movie not found");
+            } else {
+                var movie = "<p>" + data.Title + "</p><p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p>" + data.Director + "</p><p>" + data.Writer + "</p><p>" + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="' + data.Poster + '"></p>';
+
+                document.getElementById("paragraphSection").innerHTML=movie;
+            }
+        };
+    </script>
+
  </head>
        
  <body>
@@ -99,8 +125,12 @@
                             <input type="list-name" class="form-control" id="search-list-name" placeholder="Fill me" />
                         </div>
                         <div class="form-group">
+
                             <div class="col-smoffset-2 col-sm-10">
                             </div>
+
+                            <input id="searchInput" type="search" placeholder="Search movie database" class="form-control form-control-lg">
+                            <button onclick="ajaxCall()" class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
                         </div>
                     </form>
                 </div>
@@ -132,12 +162,12 @@
             </div>
         </div>
     </div>
+
+
     <section id="content-section">
         <div class="col-md-6"></div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6"><p id="paragraphSection"></p></div>
     </section>
-    
-    
  </body>
 
 </html>

@@ -23,6 +23,18 @@
     padding: 0 15px;
 }*/
 
+/* Content Section */
+
+#content-section{
+    height: 50%;
+    width: 100%;
+    background: #D3D3D3;
+}
+
+#content-section .col-md-6{
+    height: 100%;
+}
+
 /* Main Page Movie Search Bar */
 
 .featurette{
