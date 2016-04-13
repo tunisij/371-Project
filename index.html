@@ -6,9 +6,7 @@
     <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
     <script src="bower_components/bootstrap/js/modal.js"></script>
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    
-
+    <link rel="icon" type="image/png" href="assets/images/movielist-logo.png" sizes="16x16">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>
         function ajaxCall() {
@@ -125,12 +123,8 @@
                             <input type="list-name" class="form-control" id="search-list-name" placeholder="Fill me" />
                         </div>
                         <div class="form-group">
-
                             <div class="col-smoffset-2 col-sm-10">
-                            </div>
-
-                            <input id="searchInput" type="search" placeholder="Search movie database" class="form-control form-control-lg">
-                            <button onclick="ajaxCall()" class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
+                            </div>                            
                         </div>
                     </form>
                 </div>
@@ -154,9 +148,8 @@
                 <form role="form" class="search has-button">
                     <h3 class="no-margin-top h3">Search movies</h3>
                     <div class="form-group">
-                        <input type="search" placeholder="Search movie database" class="form-control form-control-lg">
-                        <button class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
-
+                        <input id="searchInput" type="search" placeholder="Search movie database" class="form-control form-control-lg">
+                        <button onclick="ajaxCall()" class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
                     </div>
                 </form>
             </div>
