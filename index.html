@@ -6,82 +6,138 @@
     <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
     <script src="bower_components/bootstrap/js/modal.js"></script>
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     
  </head>
        
  <body>
      
-     <!-- TODO: make this heading container a boostrap nav bar 
-     http://www.bootply.com/98624 -->
-    <section id="heading-container">
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-md-3"><img src="assets/images/movielist-logo-name.png"
-                        alt="Movie List" style="width: 100px; height:100px;">
-                    </div>
-                    
-                    <div class="col-md-3 pull-right">
-                        <!-- Model Inputs for Creating New List and search existing lists  
-                         https://jsfiddle.net/KyleMit/0fscmf3L 
-                         -->
-                        <button class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#createListModel">Create List</button>
-                        <div class="modal fade" id="createListModel" tabindex-"-1" role="dialog"
-                            aria-labelledby="modelLabel1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Model Header -->
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">
-                                            <span aria-hidden="true">&times;</span>
-                                            <span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="modelLabel1">
-                                            Create a List
-                                        </h4>
-                                    </div>
-                                    <! -- Model Body --> 
-                                    <div class="modal-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label"
-                                                    for="inputNewListName">List Name</label>
-                                                <div class="col-sm-10">
-                                                    <input type="name" class="form-control" id="inputName" placeholder="List Name"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" class="btn btn-default">Create</button>
-                                                </div>
-                                            </div>
-                                         </form>
-                                    </div>
-                                    <!-- Model Footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>    
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 pull-right"></div>
+     <!-- Navbar -->
+     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get groupe for better mobile view -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#movieBarNav">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <!-- <img src="assets/images/movielist-logo-name.png" alt="" style="width:150px; height:150px;"> 
+                        -->
+                        Movie List
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms etc -->
+                <div class="collapse navbar-collapse" id="movieBarNav">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="create-list-modal" data-toggle="modal" data-target="#create-list-modal">Create List</a>
+                        </li>   
+                        <li>
+                            <a href="search-list-modal" data-toggle="modal" data-target="#search-list-modal">Search Lists</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
-        </section>
-        
-        <div id="container search">
-            <div class="featurette">
-                <div class="featurette-inner text-center">
-                    <form role="form" class="search has-button">
-			<h3 class="no-margin-top h3">Search movies</h3>
+            <!-- /.container -->
+      </nav>
+                    
+    <!-- Modal for Creating a list --> 
+    <div class="modal fade" id="create-list-modal" tabindex= "-1" role="dialog" aria-labelledby="modelLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="modelLabel1">Create a List</h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
                         <div class="form-group">
-                            <input type="search" placeholder="Search movie database" class="form-control form-control-lg">
-                            <button class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
-                               
+                            <div class="col-sm-10">
+                                <input type="name" class="form-control" id="inputName" placeholder="List Name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                            </div>
                         </div>
                     </form>
+                </div>
+                <!-- Model Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default">Create</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
+    </div>
+    <!-- / Create a list Modal -->
+    <div class="modal fade" id="search-list-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label-2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-label-2">Search a List</h4>
+                </div>
+                <!-- /Modal header -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="col-sm-10">
+                            <input type="list-name" class="form-control" id="search-list-name" placeholder="Fill me" />
+                        </div>
+                        <div class="form-group">
+                            <div class="col-smoffset-2 col-sm-10">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /Modal Header -->
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default">Search</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                <!-- /Modal Footer -->
+            </div>
+        </div>
+    </div>
+    
+                       
+   <!-- Modal for Searching a list --> 
+            
+    <div id="container search">
+        <div class="featurette">
+            <div class="featurette-inner text-center">
+                <form role="form" class="search has-button">
+                    <h3 class="no-margin-top h3">Search movies</h3>
+                    <div class="form-group">
+                        <input type="search" placeholder="Search movie database" class="form-control form-control-lg">
+                        <button class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <section id="content-section">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </section>
+    
+    
  </body>
 
 </html>
