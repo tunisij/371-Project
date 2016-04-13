@@ -1,3 +1,5 @@
+
+
 /* Header Styles */
 
 #heading-container{
@@ -11,6 +13,15 @@
     align-content: center;
 }
 
+/* Adjust Boostrap Styles */
+
+/*.navbar-fixed-top .nav {
+    padding: 15px 0;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 15px;
+}*/
 
 /* Main Page Movie Search Bar */
 
@@ -19,7 +30,7 @@
     width: 100%;
     height: 30%;
     vertical-align: middle;
-    background: #555;
+    background: #00ACe9;
     color: #fff;
 }
 
@@ -52,6 +63,18 @@ featurette .search.has-button .form-group{
     width: 100%;
 }
 
+/* Content Section */
+
+#content-section{
+    height: 50%;
+    width: 100%;
+    background: #D3D3D3;
+}
+
+#content-section .col-md-6{
+    height: 100%;
+}
+
 /* Modal Forms */
 
 .modal-body .form-horizontal .col-sm-2,
@@ -65,8 +88,6 @@ featurette .search.has-button .form-group{
 .modal-body .form-horizontal .col-sm-offset-2 {
     margin-left: 15px;
 }
-
-
 
 /* Media Queries */
 
@@ -82,5 +103,15 @@ featurette .search.has-button .form-group{
         right: 0;
         width: auto;
         margin: 0;
+    }
+}
+
+@media(min-width:768px) {
+    /*body {
+        padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }*/
+
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
     }
 }
