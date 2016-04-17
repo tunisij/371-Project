@@ -12,7 +12,7 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-    $sql = "INSERT INTO Movies(title, 'releaseDate', year, runTime, genre, director, actors, plot, imdbRating, poster) Values('".$_GET['title']."','".$_GET['releaseDate']."',". $_GET['year'] .",'". $_GET['runTime'] ."','". $_GET['genre'] ."','" . $_GET['director']. "','". $_GET['actors'] ."','". $_GET['plot'] ."','". $_GET['imdbRating'] ."','". $_GET['poster'] ."');";
+    $sql = "INSERT INTO Movies(title, releaseDate, year, runTime, genre, director, actors, plot, imdbRating, poster) Values('".$_GET['title']."','".$_GET['releaseDate']."',". $_GET['year'] .",'". $_GET['runTime'] ."','". $_GET['genre'] ."','" . $_GET['director']. "','". $_GET['actors'] ."','". $_GET['plot'] ."','". $_GET['imdbRating'] ."','". $_GET['poster'] ."');";
 
     if($conn->query($sql)){
       echo "SQL insert success";

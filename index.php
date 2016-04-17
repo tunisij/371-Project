@@ -29,10 +29,7 @@
                 $.ajax({
                   url: "http://cis.gvsu.edu/~sinclaik//project/371project/insertMovie.php",
                   data: {title: data.Title, releaseDate: data.Released, year: data.Year, runTime: data.Runtime, genre: data.Genre, director: data.Director, actors: data.Actors, plot: data.Plot, imdbRating: data.imdbRating, poster: data.Poster},
-                  type: "GET",
-                  context: document.body,
-                  success: function() {document.getElementById("searchListSection").innerHTML="yay";},
-                  error: function() {document.getElementById("searchListSection").innerHTML="nooo";}
+                  type: "GET"
                 });
 
                 var movie = "<p>" + data.Title + "</p><p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p>" + data.Director + "</p><p>" + data.Writer + "</p><p>" + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="' + data.Poster + '"></p>';
