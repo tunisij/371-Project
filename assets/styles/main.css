@@ -31,9 +31,10 @@
     background: #D3D3D3;
 }
 
-#content-section .col-md-6{
+#content-section .col-md-6 .col-md-2 .col-md-10{
     height: 100%;
 }
+
 
 /* Main Page Movie Search Bar */
 
@@ -70,7 +71,7 @@
     line-height: normal;
 }
 
-featurette .search.has-button .form-group{
+.featurette .search.has-button .form-group{
     margin-top: 5px;
     width: 100%;
 }
@@ -115,15 +116,5 @@ featurette .search.has-button .form-group{
         right: 0;
         width: auto;
         margin: 0;
-    }
-}
-
-@media(min-width:768px) {
-    /*body {
-        padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
-    }*/
-
-    .navbar-fixed-top .navbar-brand {
-        padding: 15px 0;
     }
 }
