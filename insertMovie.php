@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 $servername = "cis.gvsu.edu";
 $username = "sinclair";
@@ -10,18 +11,8 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
-$_SESSION['title']=$_GET['title'];
-$_SESSION[''releaseDate'']=$_GET[''releaseDate''];
-$_SESSION['year']=$_GET['year'];
-$_SESSION['runTime']=$_GET['runTime'];
-$_SESSION['genre']=$_GET['genre'];
-$_SESSION['director']=$_GET['director'];
-$_SESSION['actors']=$_GET['actors'];
-$_SESSION['plot']=$_GET['plot'];
-$_SESSION['imdbRating']=$_GET['imdbRating'];
-$_SESSION['poster']=$_GET['poster'];
 
-    $sql = "INSERT INTO Movies(title, 'releaseDate', year, runTime, genre, director, actors, plot, imdbRating, poster) Values('".$_SESSION['title']."','".$_SESSION['releaseDate']."',". $_SESSION['year'] .",'". $_SESSION['runTime'] ."','". $_SESSION['genre'] ."','" . $_SESSION['director']. "','". $_SESSION['actors'] ."','". $_SESSION['plot'] ."','". $_SESSION['imdbRating'] ."','". $_SESSION['poster'] ."');";
+    $sql = "INSERT INTO Movies(title, 'releaseDate', year, runTime, genre, director, actors, plot, imdbRating, poster) Values('".$_GET['title']."','".$_GET['releaseDate']."',". $_GET['year'] .",'". $_GET['runTime'] ."','". $_GET['genre'] ."','" . $_GET['director']. "','". $_GET['actors'] ."','". $_GET['plot'] ."','". $_GET['imdbRating'] ."','". $_GET['poster'] ."');";
 
     if($conn->query($sql)){
       echo "SQL insert success";
