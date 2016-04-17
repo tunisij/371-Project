@@ -21,7 +21,7 @@ $_SESSION['plot']=$_GET['plot'];
 $_SESSION['imdbRating']=$_GET['imdbRating'];
 $_SESSION['poster']=$_GET['poster'];
 
-    $sql = "INSERT INTO Lists(title, 'releaseDate', year, runTime, genre, director, actors, plot, imdbRating, poster) Values('".$_SESSION['title']."','".$_SESSION['releaseDate']."',". $_SESSION['year'] .",'". $_SESSION['runTime'] ."','". $_SESSION['genre'] ."','" . $_SESSION['director']. "','". $_SESSION['actors'] ."','". $_SESSION['plot'] ."','". $_SESSION['imdbRating'] ."','". $_SESSION['poster'] ."');";
+    $sql = "INSERT INTO Movies(title, 'releaseDate', year, runTime, genre, director, actors, plot, imdbRating, poster) Values('".$_SESSION['title']."','".$_SESSION['releaseDate']."',". $_SESSION['year'] .",'". $_SESSION['runTime'] ."','". $_SESSION['genre'] ."','" . $_SESSION['director']. "','". $_SESSION['actors'] ."','". $_SESSION['plot'] ."','". $_SESSION['imdbRating'] ."','". $_SESSION['poster'] ."');";
 
     if($conn->query($sql)){
       echo "SQL insert success";
