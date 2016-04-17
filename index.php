@@ -10,6 +10,9 @@
     <link rel="icon" type="image/png" href="assets/images/movielist-logo.png" sizes="16x16">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>
+        var movieData = null;
+        var movieList = {"1": true};
+
         function ajaxCall() {
             var searchText = document.getElementById("searchInput").value.split(" ");
             searchText = searchText.join("+");
@@ -27,16 +30,54 @@
                 alert("Movie not found");
             } else {
                 $.ajax({
-                  url: "http://cis.gvsu.edu/~sinclaik//project/371project/insertMovie.php",
+                  url: "http://www.cis.gvsu.edu/~sinclaik//project/371project/insertMovie.php",
                   data: {title: data.Title, releaseDate: data.Released, year: data.Year, runTime: data.Runtime, genre: data.Genre, director: data.Director, actors: data.Actors, plot: data.Plot, imdbRating: data.imdbRating, poster: data.Poster},
                   type: "GET"
                 });
 
-                var movie = "<p>" + data.Title + "</p><p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p>" + data.Director + "</p><p>" + data.Writer + "</p><p>" + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="' + data.Poster + '"></p>';
+                movieData = data;
+
+                var movie = '<p>' + data.Title + "</p><p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p>" + data.Director + "</p><p>" + data.Writer + "</p><p>" + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="' + data.Poster + '"></p>';
 
                 document.getElementById("paragraphSection").innerHTML=movie;
             }
         };
+
+        function createList() {
+            var listName = document.getElementById("inputName").value;
+            document.getElementById("list-name").innerHTML=listName;
+
+            var tableBody = document.getElementById("table-body");
+            
+            tableBody.remove();
+
+            var table = document.getElementById("list-table");
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+
+            cell1.innerHTML = '<button onclick="addToList()" class="btn btn-lg btn-warning" id="add-to-list-button" type="button">Add To List</button>';
+            cell2.innerHTML = '<button onclick="saveList()" class="btn btn-lg btn-warning" id="save-list-button" type="button">Save List</button>';
+        };
+
+        function addToList() {
+            if (!(movieData.Title in movieList)) {
+                movieList[movieData.Title] = true;
+
+                var table = document.getElementById("list-table");
+                var row = table.insertRow(1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+
+                cell1.innerHTML = movieData.Title;   
+                cell2.innerHTML = '<button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button>';
+            }
+        };
+
+        function saveList() {
+            
+        };
+
     </script>
 
  </head>
@@ -104,7 +145,7 @@
                 </div>
                 <!-- Model Footer -->
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-default">Create</button>
+                    <button onclick="createList()" type="submit" class="btn btn-default" data-dismiss="modal">Create</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -167,7 +208,6 @@
     <section id="content-section">
         <div class="col-md-6"><p id="paragraphSection"></p></div>
         <div class="col-md-6">
-            <p id="searchListSection"></p>
             <h3 id="list-name">Search or Create a List to View</h3>
                 <table class="table" id="list-table">
                     <thead>
@@ -177,7 +217,7 @@
                             <th><th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table-body">
                         <tr>
                             <td>Example Data</td>
                             <td><button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button></td>
