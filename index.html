@@ -25,7 +25,12 @@
                 document.getElementById("paragraphSection").innerHTML="";
                 alert("Movie not found");
             } else {
-                var movie = "<p>" + data.Title + "</p><p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p>" + data.Director + "</p><p>" + data.Writer + "</p><p>" + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="' + data.Poster + '"></p>';
+                var
+		    movie="<table><thead><tr><th>Title</th><th>Year</th><th>Rating</th><th>Runtime</th><th>Genre</th><th>Director</th></thead><tbody><tr><td>"+data.Title+
+		    "</td><td>" + data.Year + "</td><td>" + data.Rated + "</td><td>" + data.Runtime
+		    + "</td><td>" + data.Genre + "</td><td>" + data.Director
+		    +"</td></tr></tbody></table><p><img src="+data.Poster+'class="img-responsive"'+"</p>";
+		// + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="' + data.Poster + '"></p>';
 
                 document.getElementById("paragraphSection").innerHTML=movie;
             }
@@ -158,8 +163,12 @@
 
 
     <section id="content-section">
-        <div class="col-md-6"></div>
-        <div class="col-md-6"><p id="paragraphSection"></p></div>
+	<div class="col-sm-6 table-responsive">
+	    <p>Placeholder for list table.
+	</div>
+        <div class="col-sm-6 table-responsive">
+	    <table class="table-bordered" id="paragraphSection"></table>
+	</div>
     </section>
  </body>
 
