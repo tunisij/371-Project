@@ -27,7 +27,7 @@
                 alert("Movie not found");
             } else {
                 $.ajax({
-                  url: "http://cis.gvsu.edu/~tunisij/project/371project/insertMovie.php",
+                  url: "http://cis.gvsu.edu/~sinclaik//project/371project/insertMovie.php",
                   data: {title: data.Title, releaseDate: data.Released, year: data.Year, runTime: data.Runtime, genre: data.Genre, director: data.Director, actors: data.Actors, plot: data.Plot, imdbRating: data.imdbRating, poster: data.Poster},
                   type: "GET",
                   context: document.body,
