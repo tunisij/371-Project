@@ -37,7 +37,7 @@
  <body>
      
      <!-- Navbar -->
-     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+     <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get groupe for better mobile view -->
                 <div class="navbar-header">
@@ -146,7 +146,7 @@
         <div class="featurette">
             <div class="featurette-inner text-center">
                 <form role="form" class="search has-button">
-                    <h3 class="no-margin-top h3">Search movies</h3>
+                    <h3 class="no-margin-top h3">Search movies. Create a list.</h3>
                     <div class="form-group">
                         <input id="searchInput" type="search" placeholder="Search movie database" class="form-control form-control-lg">
                         <button onclick="ajaxCall()" class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
@@ -158,8 +158,27 @@
 
 
     <section id="content-section">
-        <div class="col-md-6"></div>
         <div class="col-md-6"><p id="paragraphSection"></p></div>
+        <div class="col-md-6">
+            <h3 id="list-name">Search or Create a List to View</h3>
+                <table class="table" id="list-table">
+                    <thead>
+                        <tr>
+                            <th>Movie</th>
+                            <th></th>
+                            <th><th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Example Data</td>
+                            <td><button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button></td>
+                        </tr>
+                        
+                    </tbody>
+                </table> 
+        </div>
+        
     </section>
  </body>
 
