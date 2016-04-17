@@ -11,7 +11,8 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>
         var movieData = null;
-        var movieList = {"1": true};
+        var movieList = {};
+        var listName = null;
 
         function ajaxCall() {
             var searchText = document.getElementById("searchInput").value.split(" ");
@@ -44,7 +45,7 @@
         };
 
         function createList() {
-            var listName = document.getElementById("inputName").value;
+            listName = document.getElementById("inputName").value;
             document.getElementById("list-name").innerHTML=listName;
 
             var tableBody = document.getElementById("table-body");
@@ -52,6 +53,9 @@
             tableBody.remove();
 
             var table = document.getElementById("list-table");
+
+            table.remove();
+
             var row = table.insertRow(1);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -64,6 +68,11 @@
             if (!(movieData.Title in movieList)) {
                 movieList[movieData.Title] = true;
 
+                if (Object.keys(movieList).length > 4) {
+                    var elem = document.getElementById('add-to-list-button');
+                    elem.parentNode.removeChild(elem);
+                }
+
                 var table = document.getElementById("list-table");
                 var row = table.insertRow(1);
                 var cell1 = row.insertCell(0);
@@ -74,8 +83,80 @@
             }
         };
 
+        function removeFromList() {
+
+        };
+
         function saveList() {
-            
+            $.ajax({
+                  url: "http://www.cis.gvsu.edu/~sinclaik//project/371project/insertList.php",
+                  data: {name: listName, l1: Object.keys(movieList)[0], l2: Object.keys(movieList)[1], l3: Object.keys(movieList)[2], l4: Object.keys(movieList)[3], l5: Object.keys(movieList)[4]},
+                  type: "GET",
+                  success: function() {alert("Your list has been saved.");},
+                  error: function() {alert("An error occured while saving. Please try again.");}
+                });
+        };
+
+        function searchLists() {
+            listName = document.getElementById("search-list-name").value
+            $.ajax({
+                  url: "http://www.cis.gvsu.edu/~sinclaik//project/371project/searchList.php",
+                  data: {name: listName},
+                  type: "GET",
+                  dataType: "json",
+                  success: showList
+            });
+        };
+
+        function showList(data) {
+            listName = data[0].name;
+            movieList = {};
+
+            if (data[0].l1 != null) {
+                movieList[data[0].l1] = true;    
+            }
+
+            if (data[0].l2 != null) {
+                movieList[data[0].l2] = true;    
+            }
+
+            if (data[0].l3 != null) {
+                movieList[data[0].l3] = true;    
+            }
+
+            if (data[0].l4 != null) {
+                movieList[data[0].l4] = true;    
+            }
+
+            if (data[0].l5 != null) {
+                movieList[data[0].l5] = true;    
+            }
+
+            displayListTable();
+        };
+
+        function displayListTable() {
+            document.getElementById("list-name").innerHTML=listName;
+
+            var table = document.getElementById("list-table");
+
+            if (Object.keys(movieList).length < 5) {
+                var row = table.insertRow(1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                
+                cell1.innerHTML = '<button onclick="addToList()" class="btn btn-lg btn-warning" id="add-to-list-button" type="button">Add To List</button>';
+                cell2.innerHTML = '<button onclick="saveList()" class="btn btn-lg btn-warning" id="save-list-button" type="button">Save List</button>';
+            }
+
+            for (key in movieList) {
+                var row = table.insertRow(1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+
+                cell1.innerHTML = key;
+                cell2.innerHTML = '<button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button>';
+            }
         };
 
     </script>
@@ -179,7 +260,7 @@
                 <!-- /Modal Header -->
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-default">Search</button>
+                    <button onclick="searchLists()" type="submit" class="btn btn-default" data-dismiss="modal">Search</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                 <!-- /Modal Footer -->
