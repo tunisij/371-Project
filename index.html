@@ -13,9 +13,9 @@
         function ajaxCall() {
             var searchText = document.getElementById("searchInput").value.split(" ");
             searchText = searchText.join("+");
-
+// api key = fccacada3
             $.ajax({
-            url: "http://www.omdbapi.com/?t=" + searchText + "&y=&plot=short&r=json",
+            url: "http://www.omdbapi.com/?t=" + searchText + "&y=&plot=short&r=json&apikey=fccacada3",
             dataType: "json",
             success: successFunction
             });
