@@ -19,7 +19,7 @@
             searchText = searchText.join("+");
 
             $.ajax({
-            url: "http://www.omdbapi.com/?t=" + searchText + "&y=&plot=short&r=json",
+            url: "http://www.omdbapi.com/?t=" + searchText + "&y=&plot=short&r=json&apikey=fccacda3",
             dataType: "json",
             success: successFunction
             });
