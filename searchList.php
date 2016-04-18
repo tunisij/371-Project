@@ -9,15 +9,14 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
-    $query=mysqli_query($conn,"SELECT * FROM Lists WHERE name LIKE '%" . $_GET['name'] .  "%';");
+$_SESSION['name']=$_GET['name'];
+    $query=mysqli_query($conn,"SELECT * FROM Lists WHERE name LIKE '%" . $_SESSION['name'] .  "%';");
     $count=mysqli_num_rows($query);
-    $rows= array();
-    while($r = mysqli_fetch_row($query)) {
-      $rows[] = $r;
-    }
+    $row= mysqli_fetch_object($query);
+
     if ($count>0)
     {
-      echo json_encode($rows);
+      echo json_encode($row);
     }
     else
     {

@@ -109,27 +109,27 @@
         };
 
         function showList(data) {
-            listName = data[0].name;
+            listName = data.name;
             movieList = {};
 
-            if (data[0].l1 != null) {
-                movieList[data[0].l1] = true;    
+            if (data.l1 != null) {
+                movieList[data.l1] = true;    
             }
 
-            if (data[0].l2 != null) {
-                movieList[data[0].l2] = true;    
+            if (data.l2 != null) {
+                movieList[data.l2] = true;    
             }
 
-            if (data[0].l3 != null) {
-                movieList[data[0].l3] = true;    
+            if (data.l3 != null) {
+                movieList[data.l3] = true;    
             }
 
-            if (data[0].l4 != null) {
-                movieList[data[0].l4] = true;    
+            if (data.l4 != null) {
+                movieList[data.l4] = true;    
             }
 
-            if (data[0].l5 != null) {
-                movieList[data[0].l5] = true;    
+            if (data.l5 != null) {
+                movieList[data.l5] = true;    
             }
 
             displayListTable();
