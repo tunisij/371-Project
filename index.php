@@ -109,7 +109,7 @@
         function showList(data) {
             listName = data.name;
             movieList = {};
-
+            
             if (data.l1 != null) {
                 movieList[data.l1] = true;    
             }
@@ -129,15 +129,19 @@
             if (data.l5 != null) {
                 movieList[data.l5] = true;    
             }
-
+            
             displayListTable();
+            
         };
 
         function displayListTable() {
+            
             document.getElementById("list-name").innerHTML=listName;
-
+            emptyTable();
             var table = document.getElementById("list-table");
-
+            
+            
+            
             if (Object.keys(movieList).length < 5) {
                 var row = table.insertRow(1);
                 var cell1 = row.insertCell(0);
@@ -155,7 +159,23 @@
                 cell1.innerHTML = key;
                 cell2.innerHTML = '<button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button>';
             }
+            // For some reason a blank field is generated. Quick hack to just remove it
+            table.deleteRow(1);
         };
+        
+        function emptyTable(){
+            var table = document.getElementById("list-table");
+            var len = table.rows.length;
+            for(var i = 0; i <= len-2; i++){
+                if(len == 1){
+                    continue;
+                }
+                else {
+                    table.deleteRow(1);
+                }
+            }
+            
+        }
 
     </script>
 
@@ -277,7 +297,9 @@
                     <div class="form-group">
                         <input id="searchInput" type="search" placeholder="Search movie database" class="form-control form-control-lg">
                         <button onclick="ajaxCall()" class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
+                        
                     </div>
+                    <button onclick="emptyTable()" class="btn btn-lg btn-warning" id="clear-table" type="button">Nuke List</button>
                 </form>
             </div>
         </div>
@@ -297,6 +319,10 @@
                         </tr>
                     </thead>
                     <tbody id="table-body">
+                        <tr>
+                            <td>Example Data</td>
+                            <td><button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button></td>
+                        </tr>
                         <tr>
                             <td>Example Data</td>
                             <td><button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button></td>
