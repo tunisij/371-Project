@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php session_start(); ?>
+=======
+	<?php session_start(); ?>
+>>>>>>> dev
 <html>
 <head></head>
 <body>
@@ -15,7 +19,11 @@
     		die("Connection failed: " . $conn->connect_error);
 		}
 
+<<<<<<< HEAD
 		$sql = "INSERT INTO list (name, l0, l1, l2, l3, l4) VALUES ('" . $_SESSION['name'] . "'," . $_SESSION['l0'] . "','" . $_SESSION['l1'] . "','" . $_SESSION['l2'] . "','" . $_SESSION['l3'] . "','" . $_SESSION['l4'] ."');";
+=======
+		$sql = "INSERT INTO list (name, l0, l1, l2, l3, l4) VALUES ('" . $_SESSION['name'] . "','" . $_SESSION['l0'] . "','" . $_SESSION['l1'] . "','" . $_SESSION['l2'] . "','" . $_SESSION['l3'] . "','" . $_SESSION['l4'] ."');";
+>>>>>>> dev
 
 		if($conn->query($sql)){
 			echo "SQL insert success";
@@ -26,6 +34,7 @@
 </body>
 </html>
 
+<<<<<<< HEAD
 
 <!-- CREATE TABLE econ (
 id INT NOT NULL AUTO_INCREMENT,
@@ -35,3 +44,5 @@ answer VARCHAR(100),
 answerID INT,
 PRIMARY KEY( id )
 ); -->
+=======
+>>>>>>> dev
