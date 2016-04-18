@@ -77,13 +77,14 @@
                 var cell2 = row.insertCell(1);
 
                 cell1.innerHTML = movieData.Title;   
-                cell2.innerHTML = '<button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button>';
+                cell2.innerHTML = '<button onclick="removeFromList(this)" class="btn btn-sm" id="remove-from-list" type="button">Remove</button>';
             }
         };
 
-        function removeFromList() {
-
+        function removeFromList(row) {
+            $(row).closest('tr').remove();
         };
+        
 
         function saveList() {
             $.ajax({
@@ -157,7 +158,7 @@
                 var cell2 = row.insertCell(1);
 
                 cell1.innerHTML = key;
-                cell2.innerHTML = '<button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button>';
+                cell2.innerHTML = '<button onclick="removeFromList(this)" class="btn btn-sm" id="remove-from-list" type="button">Remove</button>';
             }
             // For some reason a blank field is generated. Quick hack to just remove it
             table.deleteRow(1);
@@ -174,8 +175,12 @@
                     table.deleteRow(1);
                 }
             }
-            
         }
+        
+      
+        
+        
+        
 
     </script>
 
@@ -299,6 +304,7 @@
                         <button onclick="ajaxCall()" class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
                         
                     </div>
+                    <!-- TODO: Remove -->
                     <button onclick="emptyTable()" class="btn btn-lg btn-warning" id="clear-table" type="button">Nuke List</button>
                 </form>
             </div>
@@ -321,12 +327,9 @@
                     <tbody id="table-body">
                         <tr>
                             <td>Example Data</td>
-                            <td><button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button></td>
+                            <td><button onclick="removeFromList(this)" class="btn btn-sm" id="remove-from-list" type="button">Remove</button></td>
                         </tr>
-                        <tr>
-                            <td>Example Data</td>
-                            <td><button onclick="removeFromList()" class="btn btn-sm" id="remove-from-list" type="button">Remove</button></td>
-                        </tr>
+                        
                         
                     </tbody>
                 </table> 
