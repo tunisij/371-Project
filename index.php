@@ -100,7 +100,7 @@
         function searchLists() {
             listName = document.getElementById("search-list-name").value
             $.ajax({
-                  url: "http://www.cis.gvsu.edu/~sinclaik//project/371project/searchList.php",
+                  url: "http://www.cis.gvsu.edu/~tunisij/project/371project/searchList.php",
                   data: {name: listName},
                   type: "GET",
                   dataType: "json",
