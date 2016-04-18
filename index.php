@@ -51,7 +51,7 @@
             var tableBody = document.getElementById("table-body");
             
             tableBody.remove();
-
+            emptyTable();
             var table = document.getElementById("list-table");
 
             var row = table.insertRow(1);
