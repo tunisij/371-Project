@@ -13,7 +13,7 @@ if (!$conn) {
 
 $id=$_GET['id'];
 
-$sql = "UPDATE Lists SET name='".$_GET['name']."',l1='".$_GET['l1']."',l2='".$_GET['l2']."',l3='".$_GET['l3']."',l4='".$_GET['l4']."',l5='".$_GET['l5']."' WHERE id='$id'";
+$sql = "UPDATE Lists SET name='".$_GET['name']."',l1='".$_GET['l1']."',l2='".$_GET['l2']."',l3='".$_GET['l3']."',l4='".$_GET['l4']."',l5='".$_GET['l5']."' WHERE name='".$_GET['name']."';
 if ($conn->query($sql) === TRUE) {
   echo '{"success":true}';
 } else {

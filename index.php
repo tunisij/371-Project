@@ -36,12 +36,12 @@
                   type: "GET"
                 });
                 
-                //  $.ajax({
-                //      url:"http://img.omdbapi.com/?apikey=fccacda3&i=" + data.imdbID,
-                //      dataType: "image",
-                //      data: { i: data.Poster },
-                //      type: "GET"
-                //  })
+                // $.ajax({
+                //       url:"http://img.omdbapi.com/?apikey=fccacda3&i=" + data.imdbID,
+                //       dataType: "image",
+                //       data: { i: data.Poster },
+                //       type: "GET"
+                //   })
                 movieData = data;
                 var movieTitle = data.Title;
                 var movieInfo =  "<p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p> Director: " + data.Director + "</p><p> Actors: " + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="';
@@ -55,6 +55,12 @@
         };
 
         function createList() {
+            var newListName = document.getElementById("inputName").value;
+            console.log(newListName);
+            if(newListName == ""){
+                alert("List must have a name");
+                return;
+            }
             listName = document.getElementById("inputName").value;
             document.getElementById("list-name").innerHTML=listName;
 
@@ -95,7 +101,7 @@
             var $row = $(row).closest('tr')
             $tds = $row.find("td");
             $text = $tds[0].innerHTML;
-
+            
             delete movieList[$text];
             displayListTable();
             updateList();
@@ -103,11 +109,29 @@
             // $(row).closest('tr').remove();
         };
 
+        // function updateList() {
+        //     $.ajax({
+        //           url: "http://www.cis.gvsu.edu/~tunisij/project/371project/updateList.php",
+        //           data: {name: listName, l1: Object.keys(movieList)[0], l2: Object.keys(movieList)[1], l3: Object.keys(movieList)[2], l4: Object.keys(movieList)[3], l5: Object.keys(movieList)[4]},
+        //           type: "GET",
+        //           success: function() {alert("Your list has been updated.");},
+        //           error: function() {alert("An error occured while saving. Please try again.");}
+        //         });
+        // };
+        
         function updateList() {
+            var test = [];
+            for(i=0;i<5;i++){
+                if(Object.keys(movieList)[i] == null){
+                    test[i] = "";
+                } else {   
+                    test[i] = Object.keys(movieList)[i];
+                }
+            }
+            
             $.ajax({
-                  url: "http://www.cis.gvsu.edu/~tunisij/project/371project/updateList.php",
-                  data: {name: listName, l1: Object.keys(movieList)[0], l2: Object.keys(movieList)[1], l3: Object.keys(movieList)[2], l4: Object.keys(movieList)[3], l5: Object.keys(movieList)[4]},
-                  type: "GET",
+                  url: "http://www.cis.gvsu.edu/~rossch/tests/updateList.php?name="+listName+"&l1="+test[0]+"&l2="+test[1]+"&l3="+test[2]+"&l4="+test[3]+"&l5="+test[4],
+                  type: "POST",
                   success: function() {alert("Your list has been updated.");},
                   error: function() {alert("An error occured while saving. Please try again.");}
                 });
@@ -115,7 +139,7 @@
 
         function saveList() {
             $.ajax({
-                  url: "http://www.cis.gvsu.edu/~sinclaik//project/371project/insertList.php",
+                  url: "http://www.cis.gvsu.edu/~rossch/tests/insertList.php",
                   data: {name: listName, l1: Object.keys(movieList)[0], l2: Object.keys(movieList)[1], l3: Object.keys(movieList)[2], l4: Object.keys(movieList)[3], l5: Object.keys(movieList)[4]},
                   type: "GET",
                   success: function() {alert("Your list has been saved.");},
@@ -124,9 +148,13 @@
         };
 
         function searchLists() {
-            listName = document.getElementById("search-list-name").value
+            listName = document.getElementById("search-list-name").value;
+            // if(listName == null){
+            //     alert("Must enter a valid list name");
+            //     return;
+            // }
             $.ajax({
-                  url: "http://www.cis.gvsu.edu/~sinclaik//project/371project/searchList.php",
+                  url: "http://www.cis.gvsu.edu/~rossch/tests/searchList.php",
                   data: {name: listName},
                   type: "GET",
                   dataType: "json",
@@ -136,6 +164,14 @@
 
         function showList(data) {
             listName = data.name;
+            if(listName == null){
+                alert("List does not exist");
+                return;
+            }
+            if(listName == ""){
+                alert("Please enter a list name");
+                return;
+            }
             movieList = {};
             
             if (data.l1 != null) {
@@ -163,12 +199,9 @@
         };
 
         function displayListTable() {
-            
             document.getElementById("list-name").innerHTML=listName;
             emptyTable();
             var table = document.getElementById("list-table");
-            
-            
             
             if (Object.keys(movieList).length < 5) {
                 var row = table.insertRow(1);
@@ -203,11 +236,6 @@
                 }
             }
         }
-        
-      
-        
-        
-        
 
     </script>
 
