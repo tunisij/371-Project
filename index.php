@@ -338,7 +338,7 @@
 
 
     <section id="content-section">
-        <div class="col-md-3 text-center" id="movie-poster-section"></div>
+        <div class="col-md-3 text-center" id="movie-poster-section" style="padding-top: 1%;"></div>
         <div class="col-md-3" id="movie-info-section">
             <h2 id="movie-title"></h2>
             <p id="movie-info"></p>    
