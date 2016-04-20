@@ -32,15 +32,25 @@
             } else {
                 $.ajax({
                   url: "http://www.cis.gvsu.edu/~sinclaik//project/371project/insertMovie.php",
-                  data: {title: data.Title, releaseDate: data.Released, year: data.Year, runTime: data.Runtime, genre: data.Genre, director: data.Director, actors: data.Actors, plot: data.Plot, imdbRating: data.imdbRating, poster: data.Poster},
+                  data: {title: data.Title, releaseDate: data.Released, year: data.Year, runTime: data.Runtime, genre: data.Genre, director: data.Director, actors: data.Actors, plot: data.Plot, imdbRating: data.imdbRating, imdbId: data.imdbID},
                   type: "GET"
                 });
-
+                
+                // $.ajax({
+                //     url:"http://img.omdbapi.com/?apikey=fccacda3&i=" + data.imdbID,
+                //     dataType: "image",
+                //     data: { i: data.Poster },
+                //     type: "GET"
+                // })
                 movieData = data;
+                var movieTitle = data.Title;
+                var movieInfo =  "<p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p> Director: " + data.Director + "</p><p> Actors: " + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="';
+                var moviePoster = "<img src=" + data.Poster + ">";
 
-                var movie = '<p>' + data.Title + "</p><p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p>" + data.Director + "</p><p>" + data.Writer + "</p><p>" + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="' + data.Poster + '"></p>';
-
-                document.getElementById("paragraphSection").innerHTML=movie;
+                document.getElementById("movie-poster-section").innerHTML=moviePoster;
+                document.getElementById("movie-title").innerHTML=movieTitle;
+                document.getElementById("movie-info").innerHTML=movieInfo;
+                
             }
         };
 
@@ -321,8 +331,6 @@
                         <button onclick="ajaxCall()" class="btn btn-lg btn-warning" id="movie-search-button" type="button">Search</button>
                         
                     </div>
-                    <!-- TODO: Remove -->
-                    <button onclick="emptyTable()" class="btn btn-lg btn-warning" id="clear-table" type="button">Nuke List</button>
                 </form>
             </div>
         </div>
@@ -330,7 +338,12 @@
 
 
     <section id="content-section">
-        <div class="col-md-6"><p id="paragraphSection"></p></div>
+        <div class="col-md-3" id="movie-poster-section"></div>
+        <div class="col-md-3" id="movie-info-section">
+            <h2 id="movie-title"></h2>
+            <p id="movie-info"></p>    
+        </div>
+            
         <div class="col-md-6">
             <h3 id="list-name">Search or Create a List to View</h3>
                 <table class="table" id="list-table">
