@@ -36,12 +36,12 @@
                   type: "GET"
                 });
                 
-                // $.ajax({
-                //     url:"http://img.omdbapi.com/?apikey=fccacda3&i=" + data.imdbID,
-                //     dataType: "image",
-                //     data: { i: data.Poster },
-                //     type: "GET"
-                // })
+                //  $.ajax({
+                //      url:"http://img.omdbapi.com/?apikey=fccacda3&i=" + data.imdbID,
+                //      dataType: "image",
+                //      data: { i: data.Poster },
+                //      type: "GET"
+                //  })
                 movieData = data;
                 var movieTitle = data.Title;
                 var movieInfo =  "<p>" + data.Year + "</p><p>" + data.Rated + "</p><p>" + data.Released + "</p><p>" + data.Runtime + "</p><p>" + data.Genre + "</p><p> Director: " + data.Director + "</p><p> Actors: " + data.Actors + "</p><p>" + data.Plot + "</p><p>" + data.Awards + "</p><p>Metascore: " + data.Metascore + "</p><p>IMDB Rating: " + data.imdbRating + '</p><p><img src="';
@@ -338,7 +338,7 @@
 
 
     <section id="content-section">
-        <div class="col-md-3" id="movie-poster-section"></div>
+        <div class="col-md-3 text-center" id="movie-poster-section"></div>
         <div class="col-md-3" id="movie-info-section">
             <h2 id="movie-title"></h2>
             <p id="movie-info"></p>    

@@ -23,19 +23,8 @@
     padding: 0 15px;
 }*/
 
-.navbar .nav {
-    margin-bottom: 0;
-}
-
-/* Content Section */
-
-#content-section{
-    height: 50%;
-    width: 100%;
-}
-
-#content-section .col-md-6{
-    height: 100%;
+.navbar {
+    margin-bottom: 0 !important;
 }
 
 /* Main Page Movie Search Bar */
@@ -81,7 +70,7 @@ featurette .search.has-button .form-group{
 /* Content Section */
 
 #content-section{
-    height: 50%;
+    height: 100%;
     width: 100%;
     background: #D3D3D3;
 }
